@@ -29,10 +29,10 @@ export function SelectPool() {
   }, [traderAPI, exchangeInfo, isLoading]);
 
   return (
-    <Box>
-      {isLoading && <div>Loading exchange information...</div>}
-      {!!exchangeInfo && !isLoading && (
-        <form>
+    <>
+      <Box>
+        {isLoading && <div>Loading exchange information...</div>}
+        <form hidden={!exchangeInfo || isLoading}>
           <label htmlFor="pools">Select Pool </label>
           <select
             id="pools"
@@ -52,7 +52,7 @@ export function SelectPool() {
           </select>
           <div> Lot size: {lotSize ?? "-"} </div>
         </form>
-      )}
-    </Box>
+      </Box>
+    </>
   );
 }
