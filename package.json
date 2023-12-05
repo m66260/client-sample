@@ -1,5 +1,5 @@
 {
-  "name": "sample",
+  "name": "vite-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@d8x/perpetuals-sdk": "^1.0.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.19",
+    "@rainbow-me/rainbowkit": "^1.3.0",
+    "jotai": "^2.6.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "viem": "^1.19.11",
+    "wagmi": "^1.4.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
