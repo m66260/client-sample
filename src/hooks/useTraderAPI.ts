@@ -23,7 +23,7 @@ const useTraderAPI = (chainId: number | undefined) => {
       .then(() => setTraderAPI(api))
       .catch(console.error)
       .finally(() => setLoading(false));
-  }, [traderAPI, setTraderAPI, setLoading]);
+  }, [chainId, traderAPI, setTraderAPI, setLoading]);
   return { traderAPI: traderAPI, isLoading: isLoading };
 };
 

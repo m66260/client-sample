@@ -1,7 +1,7 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { SelectPool } from "./components/SelectPool/SelectPool";
-import { DepositLots } from "./components/DepositLots/DepositLots";
-import { Summary } from "./components/Summary/Summary";
+import { SelectPool } from "./components/select-pool/SelectPool";
+import { DepositLots } from "./components/deposit-lots/DepositLots";
+import { Summary } from "./components/summary/Summary";
 
 function App() {
   return (

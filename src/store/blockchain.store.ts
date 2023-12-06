@@ -9,3 +9,5 @@ export const poolStateAtom = atom<PoolState | undefined>(undefined);
 export const perpetualStateAtom = atom<PerpetualState | undefined>(undefined);
 
 export const selectedPoolSymbolAtom = atom<string>("");
+
+export const d8xTokenAddress = atom<string>("");
