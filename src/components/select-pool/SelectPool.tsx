@@ -18,12 +18,19 @@ export const SelectPool = memo(() => {
     if (isLoading || !exchangeInfo || traderAPI?.chainId !== data?.chain.id) {
       return [];
     }
-    return exchangeInfo.pools.map((pool) => pool.poolSymbol);
+    return exchangeInfo.pools
+      .filter((pool) => pool.isRunning)
+      .map((pool) => pool.poolSymbol);
   }, [traderAPI, exchangeInfo, isLoading, data?.chain.id]);
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth variant="standard">
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      marginInline={50}
+    >
+      <FormControl fullWidth variant="standard" margin="normal">
         <InputLabel id="demo-simple-select-label">Liquidity Pool</InputLabel>
         <Select
           labelId="demo-simple-select-label"

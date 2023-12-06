@@ -37,20 +37,14 @@ export const Summary = memo(() => {
     if (!!brokerTool && !isToolLoading && selectedPoolSymbol !== "") {
       brokerTool
         .getBrokerDesignation(selectedPoolSymbol)
-        .then((lots) => setLotsPurchased(lots));
+        .then(setLotsPurchased);
       brokerTool
         .getFeeForBrokerDesignation(selectedPoolSymbol)
-        .then((fee) => setLotsFee(fee));
-      brokerTool.getFeeForBrokerStake().then((fee) => setStakeFee(fee));
-      brokerTool
-        .getFeeForBrokerVolume(selectedPoolSymbol)
-        .then((fee) => setVolumeFee(fee));
-      brokerTool
-        .getCurrentBrokerVolume(selectedPoolSymbol)
-        .then((vol) => setVolumeUSD(vol));
-      brokerTool
-        .getBrokerInducedFee(selectedPoolSymbol)
-        .then((fee) => setTotalFee(fee));
+        .then(setLotsFee);
+      brokerTool.getFeeForBrokerStake().then(setStakeFee);
+      brokerTool.getFeeForBrokerVolume(selectedPoolSymbol).then(setVolumeFee);
+      brokerTool.getCurrentBrokerVolume(selectedPoolSymbol).then(setVolumeUSD);
+      brokerTool.getBrokerInducedFee(selectedPoolSymbol).then(setTotalFee);
     }
   }, [
     brokerTool,
@@ -64,7 +58,7 @@ export const Summary = memo(() => {
   ]);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box display="flex" justifyContent="center" alignItems="center">
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Item>Lots</Item>
@@ -73,7 +67,7 @@ export const Summary = memo(() => {
           <Item>Owned</Item>
         </Grid>
         <Grid item xs={3}>
-          <Item>{lotsPurchased}</Item>
+          <Item>{lotsPurchased ?? "-"}</Item>
         </Grid>
         <Grid item xs={3}>
           <Item>Induced Fee</Item>
@@ -105,7 +99,9 @@ export const Summary = memo(() => {
           <Item>Current</Item>
         </Grid>
         <Grid item xs={3}>
-          <Item>{volumeUSD !== undefined ? volumeUSD / 1e6 : "-"}</Item>
+          <Item>
+            {volumeUSD !== undefined ? `${volumeUSD / 1e6} mmUSD` : "-"}
+          </Item>
         </Grid>
         <Grid item xs={3}>
           <Item>Induced Fee</Item>
@@ -123,37 +119,4 @@ export const Summary = memo(() => {
       </Grid>
     </Box>
   );
-
-  // return (
-  //   <Box>
-  //     <Typography> Lots Owned: {lotsPurchased} </Typography>
-  //     <Typography>
-  //       {" "}
-  //       Current volume: {volumeUSD !== undefined ? volumeUSD / 1e6 : "-"} mmUSD
-  //     </Typography>
-  //     <Typography>
-  //       {" "}
-  //       Lots induced fee: {lotsFeeTbps !== undefined
-  //         ? lotsFeeTbps * 1e4
-  //         : "-"}{" "}
-  //       bps
-  //     </Typography>
-  //     <Typography>
-  //       {" "}
-  //       Volume induced fee:{" "}
-  //       {volumeFeeTbps !== undefined ? volumeFeeTbps * 1e4 : "-"} bps{" "}
-  //     </Typography>
-  //     <Typography>
-  //       {" "}
-  //       Stake induced fee:{" "}
-  //       {stakeFeeTbps !== undefined ? stakeFeeTbps * 1e4 : "-"} bps{" "}
-  //     </Typography>
-  //     <Typography>
-  //       {" "}
-  //       Final fee: {totalFeeTbps !== undefined
-  //         ? totalFeeTbps * 1e4
-  //         : "-"} bps{" "}
-  //     </Typography>
-  //   </Box>
-  // );
 });

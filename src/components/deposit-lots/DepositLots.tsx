@@ -90,9 +90,9 @@ export function DepositLots() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid spacing={2}>
-        <Grid item xs={1}>
-          <Item>
+      <Grid container spacing={2} marginTop={2}>
+        <Grid item xs={6} marginTop={1}>
+          <Item variant="outlined">
             <Button
               onClick={() => {
                 write?.();
@@ -100,12 +100,12 @@ export function DepositLots() {
               disabled={depositAmount <= 0}
             >
               {" "}
-              Purchase Lots{" "}
+              Buy Lots{" "}
             </Button>
           </Item>
         </Grid>
-        <Grid item xs={1}>
-          <Item>
+        <Grid item xs={6}>
+          <Item elevation={0}>
             <ResponsiveInput
               id="deposit-lots-amount"
               inputValue={inputValue}
