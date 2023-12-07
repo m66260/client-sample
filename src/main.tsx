@@ -3,19 +3,20 @@ import "@rainbow-me/rainbowkit/styles.css";
 
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { polygonZkEvm, polygonZkEvmTestnet } from "wagmi/chains";
+import { polygonZkEvmTestnet } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { x1 } from "./components/utils/chains";
 
 const { chains, publicClient } = configureChains(
-  [polygonZkEvm, polygonZkEvmTestnet],
+  [x1, polygonZkEvmTestnet],
   [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Whitelabel Partner App",
+  appName: "Mock Token Swap",
   projectId: "973a37d0572219f1fc28dda28dc7765f",
   chains,
 });

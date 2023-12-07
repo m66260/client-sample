@@ -15,14 +15,18 @@ const useTraderAPI = (chainId: number | undefined) => {
       return;
     }
     setLoading(true);
-    const api = new TraderInterface(
-      PerpetualDataHandler.readSDKConfig(chainId)
-    );
-    api
-      .createProxyInstance()
-      .then(() => setTraderAPI(api))
-      .catch(console.error)
-      .finally(() => setLoading(false));
+    try {
+      const api = new TraderInterface(
+        PerpetualDataHandler.readSDKConfig(chainId)
+      );
+      api
+        .createProxyInstance()
+        .then(() => setTraderAPI(api))
+        .finally(() => setLoading(false));
+    } catch (e) {
+      console.error(e);
+      setLoading(false);
+    }
   }, [chainId, traderAPI, setTraderAPI, setLoading]);
   return { traderAPI: traderAPI, isLoading: isLoading };
 };

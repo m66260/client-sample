@@ -18,15 +18,20 @@ const useBrokerTool = (chainId: number | undefined) => {
       return;
     }
     setLoading(true);
-    const obj = new BrokerTool(
-      PerpetualDataHandler.readSDKConfig(chainId),
-      signer
-    );
-    obj
-      .createProxyInstance()
-      .then(() => setBrokertool(obj))
-      .catch(console.error)
-      .finally(() => setLoading(false));
+    try {
+      const obj = new BrokerTool(
+        PerpetualDataHandler.readSDKConfig(chainId),
+        signer
+      );
+      obj
+        .createProxyInstance()
+        .then(() => setBrokertool(obj))
+        .catch(console.error)
+        .finally(() => setLoading(false));
+    } catch (e) {
+      console.error(e);
+      setLoading(false);
+    }
   }, [chainId, signer, brokerTool, setBrokertool, setLoading]);
   return { brokerTool: brokerTool, isLoading: isLoading };
 };

@@ -28,15 +28,17 @@ export const SelectPool = memo(() => {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      marginInline={50}
+      marginInline={10}
     >
       <FormControl fullWidth variant="standard" margin="normal">
-        <InputLabel id="demo-simple-select-label">Liquidity Pool</InputLabel>
+        <InputLabel id="demo-simple-select-label">
+          Collateral currency
+        </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={selectedPoolSymbol}
-          label="Age"
+          label=""
           onChange={(e) => {
             setSelectedPoolSymbol(e.target.value);
           }}

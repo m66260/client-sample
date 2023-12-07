@@ -20,6 +20,7 @@ interface ResponsiveInputPropsI {
   min?: number;
   max?: number;
   adornmentAction?: ReactNode;
+  disabled?: boolean;
 }
 
 export const ResponsiveInput = memo((props: ResponsiveInputPropsI) => {
@@ -35,6 +36,7 @@ export const ResponsiveInput = memo((props: ResponsiveInputPropsI) => {
     min = -1,
     max,
     adornmentAction,
+    disabled,
   } = props;
 
   const handleValueChange = (
@@ -68,6 +70,7 @@ export const ResponsiveInput = memo((props: ResponsiveInputPropsI) => {
         onChange={handleValueChange}
         onBlur={handleInputBlur}
         value={inputNumeric === null ? "" : inputValue}
+        disabled={disabled}
       />
     </Box>
   );
