@@ -1,41 +1,69 @@
 {
-  "name": "sample-client",
-  "private": true,
-  "version": "0.0.0",
+  "name": "client-sample",
   "type": "module",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
-    "dev": "vite",
+    "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
+    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@d8x/perpetuals-sdk": "1.0.2",
-    "@emotion/react": "11.11.1",
-    "@emotion/styled": "11.11.0",
-    "@mui/material": "5.14.19",
-    "@rainbow-me/rainbowkit": "1.3.0",
-    "classnames": "2.3.2",
-    "jotai": "2.3.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "viem": "1.19.11",
-    "wagmi": "1.4.7"
+    "test": "vitest run",
+    "test-watch": "vitest",
+    "test:ui": "vitest --ui"
   },
   "devDependencies": {
-    "@types/react": "18.2.37",
-    "@types/react-dom": "18.2.15",
-    "@typescript-eslint/eslint-plugin": "6.10.0",
-    "@typescript-eslint/parser": "6.10.0",
-    "@vitejs/plugin-react": "4.2.1",
-    "eslint": "8.53.0",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "eslint-plugin-react-refresh": "0.4.4",
-    "sass": "1.69.5",
-    "typescript": "5.2.2",
-    "vite": "^5.0.6",
-    "vite-plugin-checker": "0.6.2",
-    "vite-plugin-svgr": "4.2.0",
-    "vite-tsconfig-paths": "4.2.1"
+    "@emotion/cache": "^11.11.0",
+    "@emotion/react": "^11.11.1",
+    "@mui/material": "^5.15.1",
+    "@rainbow-me/rainbowkit": "^1.3.2",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "classnames": "^2.3.2",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.1.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "jsdom": "^23.0.1",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.69.5",
+    "styled-components": "^6.1.3",
+    "stylelint": "^16.0.2",
+    "stylelint-config-css-modules": "^4.4.0",
+    "stylelint-config-standard-scss": "^12.0.0",
+    "stylelint-order": "^6.0.4",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vite-plugin-checker": "^0.6.2",
+    "vite-plugin-dts": "^3.6.4",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.2.2",
+    "vitest": "^1.1.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run format",
+      "npm run lint",
+      "npm run test"
+    ]
   }
 }
